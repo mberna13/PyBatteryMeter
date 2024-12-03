@@ -11,7 +11,6 @@ Create an executable:
 The resulting executable will be in the dist/ folder.
 
 2. Add the Executable to Windows Startup
-
     Press Win + R, type shell:startup, and press Enter.
     Copy the generated .exe file into the Startup folder.
     It will now run automatically when Windows starts.
