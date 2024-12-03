@@ -1,7 +1,5 @@
 import sys
 import psutil
-# Ensure PyQt5 is installed:
-# python -m pip install PyQt5
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QProgressBar
 from PyQt5.QtCore import QTimer, Qt
 from PyQt5.QtGui import QMouseEvent
@@ -31,12 +29,8 @@ class BatteryWidget(QWidget):
                 border: 2px solid rgba(255, 255, 255, 100);
                 border-radius: 5px;
                 background: rgba(255, 255, 255, 50);
-                text-align: center;
-                color: white;
-            }
-            QProgressBar::chunk {
-                background-color: rgba(50, 200, 50, 200);  /* Green chunk */
-                width: 10px;
+                text-align: center;  /* Align text */
+                color: transparent;  /* Hide the text */
             }
         """)
 
@@ -63,6 +57,34 @@ class BatteryWidget(QWidget):
             plugged = "Plugged In" if battery.power_plugged else "On Battery"
             self.battery_label.setText(f"Battery Status: {percent}% ({plugged})")
             self.battery_bar.setValue(percent)
+
+            # Change the progress bar color dynamically
+            if percent < 20:
+                self.battery_bar.setStyleSheet("""
+                    QProgressBar {
+                        border: 2px solid rgba(255, 255, 255, 100);
+                        border-radius: 5px;
+                        background: rgba(255, 255, 255, 50);
+                        text-align: center;
+                        color: transparent;
+                    }
+                    QProgressBar::chunk {
+                        background-color: rgba(255, 50, 50, 200);  /* Red */
+                    }
+                """)
+            else:
+                self.battery_bar.setStyleSheet("""
+                    QProgressBar {
+                        border: 2px solid rgba(255, 255, 255, 100);
+                        border-radius: 5px;
+                        background: rgba(255, 255, 255, 50);
+                        text-align: center;
+                        color: transparent;
+                    }
+                    QProgressBar::chunk {
+                        background-color: rgba(50, 200, 50, 200);  /* Green */
+                    }
+                """)
         else:
             self.battery_label.setText("Battery Status: Not Available")
 

@@ -1,0 +1,17 @@
+1. Convert the Python Script into an Executable
+First, convert your Python script into an executable file using pyinstaller. This ensures it can run independently of your Python installation.
+
+Steps:
+Install PyInstaller:
+    pip install pyinstaller
+Create an executable:
+    pyinstaller --onefile --noconsole battery_widget.py
+    --onefile: Bundles everything into a single .exe file.
+    --noconsole: Hides the terminal window when running.
+The resulting executable will be in the dist/ folder.
+
+2. Add the Executable to Windows Startup
+
+    Press Win + R, type shell:startup, and press Enter.
+    Copy the generated .exe file into the Startup folder.
+    It will now run automatically when Windows starts.
