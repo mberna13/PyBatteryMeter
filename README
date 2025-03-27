@@ -5,7 +5,7 @@ Steps:
 Install PyInstaller:
     pip install pyinstaller
 Create an executable:
-    Pyinstaller --onefile --noconsole BatteryMeter.py
+    PyInstaller --onefile --noconsole BatteryMeter.py
     --onefile: Bundles everything into a single .exe file.
     --noconsole: Hides the terminal window when running.
 The resulting executable will be in the dist/ folder.
